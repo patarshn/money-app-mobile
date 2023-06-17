@@ -14,3 +14,9 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+<br>
+Reference : 
+- https://www.youtube.com/@BelajarPemrogramanPemula/videos
+- https://github.com/RipplesCode/FlutterFormValidationGetX (form validation example)
+- https://www.fluttertemplates.dev/ (flutter template example)
+- https://www.youtube.com/watch?v=EgKFr2x4L3c (send api)
