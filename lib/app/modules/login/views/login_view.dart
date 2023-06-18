@@ -64,14 +64,14 @@ class LoginView extends GetView<LoginController> {
                         onChanged: (value) {
                           controller.password = value!;
                         },
-                        obscureText: !controller.isPasswordVisible,
+                        obscureText: !controller.isPasswordVisible.value,
                         decoration: InputDecoration(
                             labelText: 'Password',
                             hintText: 'Enter your password',
                             prefixIcon: const Icon(Icons.lock_outline_rounded),
                             border: const OutlineInputBorder(),
                             suffixIcon: IconButton(
-                              icon: Icon(!controller.isPasswordVisible
+                              icon: Icon(!controller.isPasswordVisible.value
                                   ? Icons.visibility_off
                                   : Icons.visibility),
                               onPressed: controller.onPressedPasswordVisible,

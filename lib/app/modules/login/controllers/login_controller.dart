@@ -4,9 +4,7 @@ import 'package:get/get.dart';
 class LoginController extends GetxController {
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
-  final count = 0.obs;
-  RxBool _isPasswordVisible = false.obs;
-  bool get isPasswordVisible => _isPasswordVisible.value;
+  RxBool isPasswordVisible = false.obs;
   String email = 'hellow@gmail.com';
   String password = '';
   // late TextEditingController emailController, passwordController;
@@ -58,7 +56,7 @@ class LoginController extends GetxController {
   }
 
 
-  void onPressedPasswordVisible() => _isPasswordVisible.value = ! _isPasswordVisible.value;
+  void onPressedPasswordVisible() => isPasswordVisible.value = ! isPasswordVisible.value;
 
   void onPressedLogin(){
     final isValid = loginFormKey.currentState!.validate();
@@ -70,5 +68,4 @@ class LoginController extends GetxController {
     loginFormKey.currentState!.save();
   }
 
-  void increment() => count.value++;
 }
