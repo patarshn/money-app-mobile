@@ -46,7 +46,7 @@ class LoginView extends GetView<LoginController> {
                       // controller: controller.emailController,
                       initialValue: controller.email,
                       onChanged: (value) {
-                          controller.email = value!;
+                          controller.email = value;
                         },
                       decoration: const InputDecoration(
                         labelText: 'Email',
@@ -62,7 +62,7 @@ class LoginView extends GetView<LoginController> {
                         // controller: controller.passwordController,
                         initialValue: controller.password,
                         onChanged: (value) {
-                          controller.password = value!;
+                          controller.password = value;
                         },
                         obscureText: !controller.isPasswordVisible.value,
                         decoration: InputDecoration(
@@ -87,6 +87,7 @@ class LoginView extends GetView<LoginController> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(4)),
                         ),
+                        onPressed: controller.onPressedLogin,
                         child: const Padding(
                           padding: EdgeInsets.all(10.0),
                           child: Text(
@@ -95,7 +96,6 @@ class LoginView extends GetView<LoginController> {
                                 fontSize: 16, fontWeight: FontWeight.bold),
                           ),
                         ),
-                        onPressed: controller.onPressedLogin,
                       ),
                     ),
                   ],
