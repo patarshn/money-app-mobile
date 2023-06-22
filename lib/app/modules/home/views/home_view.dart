@@ -18,13 +18,14 @@ class HomeView extends GetView<HomeController> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  Text(
-                    "Richie Lorie",
+                  controller.obx((state) => Text(
+                    // "Richie Lorie",
+                    controller.state?.name ?? "",
                     style: Theme.of(context)
                         .textTheme
                         .headline6
                         ?.copyWith(fontWeight: FontWeight.bold),
-                  ),
+                  ),),
                   const SizedBox(height: 16),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -173,4 +174,36 @@ class _TopPortion extends StatelessWidget {
       ],
     );
   }
+}
+
+Widget buildMiniMenuItem(String imageName, String menuName) {
+  return Container(
+    width: 80,
+    margin: EdgeInsets.symmetric(horizontal: 8),
+    child: Column(
+      children: [
+        Container(
+          width: 60,
+          height: 60,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: Colors.grey,
+              width: 2,
+            ),
+            image: DecorationImage(
+              image: AssetImage(imageName),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        SizedBox(height: 4),
+        Text(
+          menuName,
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 12),
+        ),
+      ],
+    ),
+  );
 }

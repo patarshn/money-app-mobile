@@ -20,3 +20,5 @@ Reference :
 - https://github.com/RipplesCode/FlutterFormValidationGetX (form validation example)
 - https://www.fluttertemplates.dev/ (flutter template example)
 - https://www.youtube.com/watch?v=EgKFr2x4L3c (send api)
+- https://medium.flutterdevs.com/getx-state-management-in-flutter-a9710277b0bc (snackbar)
+-

@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/finance/bindings/finance_binding.dart';
+import '../modules/finance/views/finance_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/layout/bindings/layout_binding.dart';
@@ -29,6 +31,11 @@ class AppPages {
       name: _Paths.LOGIN,
       page: () => const LoginView(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: _Paths.FINANCE,
+      page: () => const FinanceView(),
+      binding: FinanceBinding(),
     ),
   ];
 }

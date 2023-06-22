@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:money_app_mobile/app/data/providers/auth_provider.dart';
+import 'package:money_app_mobile/app/modules/home/views/home_view.dart';
+import 'package:money_app_mobile/app/routes/app_pages.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginController extends GetxController {
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
-
+  AuthProvider authProvider = Get.put(AuthProvider());
   RxBool isPasswordVisible = false.obs;
-  String email = 'hellow@gmail.com';
-  String password = '';
+  String email = 'testing@gmail.com';
+  String password = 'testing';
   // late TextEditingController emailController, passwordController;
-
   @override
   void onInit() {
     super.onInit();
@@ -58,13 +61,22 @@ class LoginController extends GetxController {
 
   void onPressedPasswordVisible() => isPasswordVisible.value = ! isPasswordVisible.value;
 
-  void onPressedLogin(){
-    final isValid = loginFormKey.currentState!.validate();
-    if (!isValid) {
-      return;
+  void onPressedLogin() async {
+    try{
+      final isValid = loginFormKey.currentState!.validate();
+      if (!isValid) {
+        return;
+      }
+      dynamic isLogin = await authProvider.login(email, password);
+      print(isLogin);
+      if(isLogin == true){
+        print("Login berhasil");
+        Get.snackbar("Success", "Login Berhasil");
+        Get.offAllNamed(Routes.LAYOUT);
+      }
+    } catch(e){
+      Get.snackbar("test", e.toString());
     }
-
-    print({email, password});
     loginFormKey.currentState!.save();
   }
 
