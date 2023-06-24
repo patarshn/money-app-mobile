@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:money_app_mobile/app/data/providers/auth_provider.dart';
-import 'package:money_app_mobile/app/modules/home/views/home_view.dart';
 import 'package:money_app_mobile/app/routes/app_pages.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginController extends GetxController {
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();

@@ -4,9 +4,7 @@ class LayoutController extends GetxController {
   //TODO: Implement LayoutController
 
   final count = 0.obs;
-  RxInt _selectedIndex = 0.obs;
-
-  int get selectedIndex => _selectedIndex.value;
+  RxInt selectedIndex = 0.obs;
 
   @override
   void onInit() {
@@ -24,8 +22,7 @@ class LayoutController extends GetxController {
   }
   
   void onDestinationSelected(int index) {
-    _selectedIndex.value = index;
+    selectedIndex.value = index;
   }
 
-  void increment() => count.value++;
 }

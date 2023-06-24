@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:money_app_mobile/app/data/models/user_model.dart';
 import 'package:money_app_mobile/app/data/providers/auth_provider.dart';
@@ -12,12 +11,12 @@ class HomeController extends GetxController with StateMixin<User> {
   @override
   void onInit() {
     super.onInit();
-    getProfile();
   }
 
   @override
   void onReady() {
     super.onReady();
+    getProfile();
   }
 
   @override
@@ -27,9 +26,8 @@ class HomeController extends GetxController with StateMixin<User> {
 
   void getProfile() async {
     try {
-      var response = await authProvider.getProfile("64887845315eceab30c46262");
+      var response = await authProvider.getProfile();
       user = response;
-      print(user?.toJson().toString());
       change(user, status: RxStatus.success());
     } catch (e) {
       if (e is Exception) {
@@ -37,7 +35,7 @@ class HomeController extends GetxController with StateMixin<User> {
       print(e);
     } else {
       // Handle generic error
-      print("An error occurred while fetching the user data.");
+      print("throw : $e");
     }
     change(null, status: RxStatus.error());
     }

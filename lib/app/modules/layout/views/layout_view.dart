@@ -10,23 +10,21 @@ class LayoutView extends GetView<LayoutController> {
   const LayoutView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<LayoutController>(builder: (controller){
       return Scaffold(
       body: Obx(() => [
         HomeView(),
         FinanceView()
-        ][controller.selectedIndex]
+        ][controller.selectedIndex.value]
         ),
       bottomNavigationBar: Obx(() => 
         NavigationBar(destinations: [
           NavigationDestination(icon: const Icon(Icons.home), label: "User"),
           NavigationDestination(icon: Icon(Icons.explore), label: "Finance"),
         ],
-        selectedIndex: controller.selectedIndex,
+        selectedIndex: controller.selectedIndex.value,
         onDestinationSelected: controller.onDestinationSelected,
         ),
       )
     );
-    });
   }
 }
