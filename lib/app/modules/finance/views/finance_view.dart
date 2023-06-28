@@ -59,7 +59,10 @@ class FinanceView extends GetView<FinanceController> {
                   ],
                 ),
               ),
-              Obx(() => controller.financeListBuilder),
+              Container(
+                height: 220,
+                child: Obx(() => controller.financeListBuilder)
+                ),
             ],
           ),
         ),

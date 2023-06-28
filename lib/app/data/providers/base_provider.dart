@@ -5,30 +5,33 @@ import 'package:get/get_connect/http/src/request/request.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class BaseProvider extends GetConnect {
-  static Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  late String token;
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   @override
-  void onInit() async {
+  void onInit() {
     super.onInit();
-    httpClient.baseUrl = 'http://172.30.16.1:3000/api/v1/';
+    _setupHttpClient();
+  }
 
-    final sharedPreferences = await prefs;
-    token = sharedPreferences.getString('token') ?? '';
-    
-    httpClient.addAuthenticator((Request request) async {
+
+  void _setupHttpClient() {
+    httpClient.baseUrl = 'http://172.19.96.1:3000/api/v1/';
+    httpClient.addRequestModifier(_requestModifier);
+    httpClient.addResponseModifier(_responseModifier);
+  }
+
+  FutureOr<Request> _requestModifier(Request request) async {
+    final SharedPreferences sharedPreferences = await prefs;
+    final String? token = sharedPreferences.getString('token');
+    if (token != null) {
       request.headers['Authorization'] = token;
-      return request;
-    });
-    
-    httpClient.addResponseModifier((request, response) async {
-      print(response.body);
-      return response;
-    });
+    }
+    return request;
+  }
 
-    httpClient.maxAuthRetries = 3;
-
-    print("INITIAL BaseProvider");
+  FutureOr<Response> _responseModifier(Request request, Response response) async {
+    print(response.body);
+    return response;
   }
 
   Future<SharedPreferences> get prefs async {

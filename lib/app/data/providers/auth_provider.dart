@@ -1,6 +1,3 @@
-import 'dart:math';
-
-import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:money_app_mobile/app/data/models/user_model.dart';
 import 'package:money_app_mobile/app/data/providers/base_provider.dart';
@@ -25,11 +22,9 @@ class AuthProvider extends BaseProvider {
           await sharedPreferences.setString("token", "Bearer $token");
           return true;
         } else {
-          print("except");
           throw Exception({"message": response.body["message"]});
         }
       } catch (e) {
-        print("cath : $e");
         throw e;
       }
     
@@ -38,8 +33,7 @@ class AuthProvider extends BaseProvider {
 
   Future<User?> getProfile() async {
     try {
-      final response = await get('profile');
-
+      final response = await get('profile');;
       if (response.body["success"]) {
         return User.fromJson(response.body["data"]);
       } else {
