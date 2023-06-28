@@ -1,8 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:money_app_mobile/app/data/models/finance_model.dart';
 import 'package:money_app_mobile/app/data/models/finance_sum_model.dart';
 import 'package:money_app_mobile/app/data/providers/finance_provider.dart';
+import 'package:money_app_mobile/app/modules/finance/views/finance_detail_dialog.dart';
 import 'package:money_app_mobile/app/modules/finance/views/finance_list_bulder.dart';
 
 class FinanceController extends GetxController{
@@ -59,7 +61,13 @@ class FinanceController extends GetxController{
     financesSumLoading(false);
   }
   
-
+  void showAddDialog(context,Finance? finance){
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return FinanceDetailDialog(items: finance);
+    });
+  }
 
 
 }
