@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:money_app_mobile/app/modules/finance/views/finance_add_view.dart';
 import 'package:money_app_mobile/app/modules/finance/views/finance_sum_widget.dart';
 
 import '../controllers/finance_controller.dart';
@@ -10,10 +11,6 @@ class FinanceView extends GetView<FinanceController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text('FinanceView'),
-      //   centerTitle: true,
-      // ),
       body: RefreshIndicator(
         onRefresh: controller.onRefresh,
         child: SingleChildScrollView(
@@ -60,12 +57,17 @@ class FinanceView extends GetView<FinanceController> {
                 ),
               ),
               Container(
-                height: 220,
                 child: Obx(() => controller.financeListBuilder)
                 ),
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.to(FinanceAddView());
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }
