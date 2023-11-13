@@ -9,9 +9,12 @@ import 'package:money_app_mobile/app/modules/finance/views/finance_list_bulder.d
 
 class FinanceController extends GetxController{
   FinanceProvider financeProvider = Get.put(FinanceProvider());
+  final GlobalKey<FormState> financeFormKey = GlobalKey<FormState>();
   RxList<Finance?> finances = RxList<Finance?>();
   Rx<FinanceSum?> financeSum = Rx<FinanceSum?>(null);
   RxBool financesSumLoading = true.obs;
+
+  TextEditingController name = TextEditingController();
   
   @override
   void onInit() {
@@ -67,6 +70,11 @@ class FinanceController extends GetxController{
       builder: (BuildContext context) {
         return FinanceDetailDialog(items: finance);
     });
+  }
+
+  void onPressAdd() async{
+    Finance finance = new Finance();
+    await financeProvider.postFinance(finance);
   }
 
 

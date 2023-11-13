@@ -16,7 +16,7 @@ class FinanceView extends GetView<FinanceController> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
+              Container(   
                 margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
@@ -25,6 +25,7 @@ class FinanceView extends GetView<FinanceController> {
                   children: [
                     Expanded(
                       child: Container(
+                        padding: const EdgeInsets.all(8),
                         child: Obx(
                           () => FinanceSumWidget(
                             title: "Pemasukan",
@@ -35,11 +36,11 @@ class FinanceView extends GetView<FinanceController> {
                             colors: [Colors.blue.shade900, Colors.blue])
                           ),
                         ),
-                        padding: const EdgeInsets.all(8),
                       ),
                     ),
                     Expanded(
                       child: Container(
+                        padding: const EdgeInsets.all(8),
                         child: Obx(
                           () => FinanceSumWidget(
                             title: "Pengeluaran",
@@ -50,15 +51,12 @@ class FinanceView extends GetView<FinanceController> {
                             colors: [Colors.red.shade900, Colors.red])
                           ),
                         ),
-                        padding: const EdgeInsets.all(8),
                       ),
                     ),
                   ],
                 ),
               ),
-              Container(
-                child: Obx(() => controller.financeListBuilder)
-                ),
+              Obx(() => controller.financeListBuilder),
             ],
           ),
         ),

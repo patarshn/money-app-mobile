@@ -7,14 +7,11 @@ class LoginController extends GetxController {
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
   AuthProvider authProvider = Get.put(AuthProvider());
   RxBool isPasswordVisible = false.obs;
-  String email = 'testing@gmail.com';
-  String password = 'testing';
-  // late TextEditingController emailController, passwordController;
+  TextEditingController email = TextEditingController(text: "testing@gmail.com");
+  TextEditingController password = TextEditingController(text: "testing");
   @override
   void onInit() {
     super.onInit();
-    // emailController = TextEditingController();
-    // passwordController = TextEditingController(); 
   }
 
   @override
@@ -65,7 +62,7 @@ class LoginController extends GetxController {
       if (!isValid) {
         return;
       }
-      dynamic isLogin = await authProvider.login(email, password);
+      dynamic isLogin = await authProvider.login(email.text, password.text);
       print(isLogin);
       if(isLogin == true){
         print("Login berhasil");

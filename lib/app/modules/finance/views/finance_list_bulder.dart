@@ -16,53 +16,48 @@ class FinanceListBuilder extends GetWidget<FinanceController> {
     return ListView(
       shrinkWrap: true,
       children: <Widget>[
-        ListView.separated(
-          padding: const EdgeInsets.all(8),
+        ListView.builder(
+          // padding: const EdgeInsets.all(8),
           itemCount: items.length,
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
           itemBuilder: (BuildContext context, int index) {
-            return Container(
-              margin:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8.0),
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black),
-                  borderRadius: BorderRadius.circular(8.0)),
-              padding: const EdgeInsets.all(8),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: InkWell(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
+            return Padding(
+              padding: EdgeInsets.all(8),
+              child: Card(
+                elevation: 2,
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(4),
+                  onTap: (){},
+                  child: Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Expanded(
-                                  child: Column(
+                              Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("${items[index]?.type}"),
-                                  Text("${items[index]?.source}"),
-                                  Text("${items[index]?.category}"),
+                                  Expanded(
+                                      child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text("${items[index]?.type}"),
+                                      Text("${items[index]?.source}"),
+                                      Text("${items[index]?.category}"),
+                                    ],
+                                  )
+                                  ),
+                                  Text("${items[index]?.nominal}"),
                                 ],
-                              )
                               ),
-                              Text("${items[index]?.nominal}"),
                             ],
                           ),
-                        ],
-                      ),
-                      onTap: () => controller.showAddDialog(context,items[index])
-                    ),
                   ),
-                ],
+                ),
               ),
-            );
+              );
           },
-          separatorBuilder: (BuildContext context, int index) => const Divider(),
         ),
         SizedBox(height: 60,)
       ],

@@ -15,7 +15,7 @@ class BaseProvider extends GetConnect {
 
 
   void _setupHttpClient() {
-    httpClient.baseUrl = 'http://172.19.96.1:3000/api/v1/';
+    httpClient.baseUrl = 'http://localhost:3000/api/v1/';
     httpClient.addRequestModifier(_requestModifier);
     httpClient.addResponseModifier(_responseModifier);
   }

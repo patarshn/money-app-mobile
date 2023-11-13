@@ -43,11 +43,7 @@ class LoginView extends GetView<LoginController> {
                     _gap(),
                     TextFormField(
                       validator: controller.validateEmail,
-                      // controller: controller.emailController,
-                      initialValue: controller.email,
-                      onChanged: (value) {
-                          controller.email = value;
-                        },
+                      controller: controller.email,
                       decoration: const InputDecoration(
                         labelText: 'Email',
                         hintText: 'Enter your email',
@@ -59,11 +55,7 @@ class LoginView extends GetView<LoginController> {
                     Obx(() => 
                       TextFormField(
                         validator: controller.validatePassword,
-                        // controller: controller.passwordController,
-                        initialValue: controller.password,
-                        onChanged: (value) {
-                          controller.password = value;
-                        },
+                        controller: controller.password,
                         obscureText: !controller.isPasswordVisible.value,
                         decoration: InputDecoration(
                             labelText: 'Password',
